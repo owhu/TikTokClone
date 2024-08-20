@@ -11,6 +11,9 @@
 		EE3901012C6BFDC30091674D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3901002C6BFDC30091674D /* ContentView.swift */; };
 		EE3901032C6BFDC50091674D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3901022C6BFDC50091674D /* Assets.xcassets */; };
 		EE3901062C6BFDC50091674D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE3901052C6BFDC50091674D /* Preview Assets.xcassets */; };
+		EE3901222C6C00360091674D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3901212C6C00360091674D /* MainTabView.swift */; };
+		EE39012B2C753D9D0091674D /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39012A2C753D9D0091674D /* FeedView.swift */; };
+		EE39012D2C7540810091674D /* FeedCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39012C2C7540810091674D /* FeedCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		EE3901002C6BFDC30091674D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EE3901022C6BFDC50091674D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EE3901052C6BFDC50091674D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EE3901212C6C00360091674D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		EE39012A2C753D9D0091674D /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		EE39012C2C7540810091674D /* FeedCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +57,6 @@
 		EE3900FD2C6BFDC30091674D /* TikTokClone */ = {
 			isa = PBXGroup;
 			children = (
-				EE3901002C6BFDC30091674D /* ContentView.swift */,
 				EE39010C2C6BFDFE0091674D /* App */,
 				EE3901122C6BFE5D0091674D /* Core */,
 				EE3901142C6BFE610091674D /* Extensions */,
@@ -83,6 +88,16 @@
 		EE3901122C6BFE5D0091674D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				EE3901202C6BFF750091674D /* Authentication */,
+				EE39011F2C6BFF730091674D /* Comments */,
+				EE39011E2C6BFF720091674D /* Components */,
+				EE3901292C753D740091674D /* Feed */,
+				EE39011C2C6BFF700091674D /* Notifications */,
+				EE39011B2C6BFF6E0091674D /* Profile */,
+				EE39011A2C6BFF6D0091674D /* Root */,
+				EE3901192C6BFF6C0091674D /* Search */,
+				EE3901182C6BFF6A0091674D /* TabBar */,
+				EE3901172C6BFF670091674D /* UploadMedia */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -113,6 +128,80 @@
 			children = (
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EE3901172C6BFF670091674D /* UploadMedia */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UploadMedia;
+			sourceTree = "<group>";
+		};
+		EE3901182C6BFF6A0091674D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				EE3901212C6C00360091674D /* MainTabView.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		EE3901192C6BFF6C0091674D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		EE39011A2C6BFF6D0091674D /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				EE3901002C6BFDC30091674D /* ContentView.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		EE39011B2C6BFF6E0091674D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EE39011C2C6BFF700091674D /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		EE39011E2C6BFF720091674D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		EE39011F2C6BFF730091674D /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		EE3901202C6BFF750091674D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		EE3901292C753D740091674D /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				EE39012A2C753D9D0091674D /* FeedView.swift */,
+				EE39012C2C7540810091674D /* FeedCellView.swift */,
+			);
+			path = Feed;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,8 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE39012B2C753D9D0091674D /* FeedView.swift in Sources */,
 				EE3901012C6BFDC30091674D /* ContentView.swift in Sources */,
 				EE3900FF2C6BFDC30091674D /* TikTokCloneApp.swift in Sources */,
+				EE3901222C6C00360091674D /* MainTabView.swift in Sources */,
+				EE39012D2C7540810091674D /* FeedCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TikTokClone/Preview Content\"";
+				DEVELOPMENT_TEAM = X7892LLAZC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -348,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TikTokClone/Preview Content\"";
+				DEVELOPMENT_TEAM = X7892LLAZC;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
