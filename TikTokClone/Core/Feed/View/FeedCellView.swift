@@ -25,13 +25,13 @@ struct FeedCellView: View {
                 
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
-                            Text("luke.skywalker")
-                                .fontWeight(.semibold)
-                            
-                            Text("Swiiiiing")
-                                
-                        }
-                        .foregroundStyle(.white)
+                        Text("luke.skywalker")
+                            .fontWeight(.semibold)
+                        
+                        Text("Swiiiiing")
+                        
+                    }
+                    .foregroundStyle(.white)
                     .font(.subheadline)
                                         
                     Spacer()
