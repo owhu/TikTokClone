@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileHeaderVIew: View {
+struct ProfileHeaderView: View {
     var body: some View {
         VStack(spacing: 16) {
             VStack(spacing: 8) {
@@ -29,29 +29,28 @@ struct ProfileHeaderVIew: View {
                 
                 UserStatView(value: 7, title: "Likes")
             }
+            
+            // action button
+            Button {
+                
+            } label: {
+                Text("Edit Profile")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .frame(width: 360, height: 32)
+                    .foregroundStyle(.black)
+                    .background(Color(.systemGray6))
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+            }
+            
+            Divider()
    
         }
     }
 }
 
 #Preview {
-    ProfileHeaderVIew()
+    ProfileHeaderView()
 }
 
-struct UserStatView: View {
-    let value: Int
-    let title: String
-    
-    var body: some View {
-        VStack {
-            Text("\(value)")
-                .font(.subheadline)
-                .fontWeight(.bold)
-            
-            Text(title)
-                .font(.caption)
-                .foregroundStyle(.gray)
-        }
-        .frame(width: 80, alignment: .center)
-    }
-}
+
