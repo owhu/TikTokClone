@@ -10,16 +10,30 @@ import AVKit
 
 struct FeedCellView: View {
     let post: Post
+    var player: AVPlayer
+    
+    init(post: Post, player: AVPlayer) {
+        self.post = post
+        self.player = player
+    }
+    
     var body: some View {
         ZStack {
-//            VideoPlayer(player: AVPlayer(url: URL(string: post.videoUrl)!))
-//                    .containerRelativeFrame([.horizontal, . vertical])
-            if let url = URL(string: post.videoUrl) {
-                VideoPlayer(player: AVPlayer(url: url))
-                    .containerRelativeFrame([.horizontal, .vertical])
-            } else {
-                Text("Invalid video URL")
-            }
+            CustomVideoPlayer(player: player)
+                    .containerRelativeFrame([.horizontal, . vertical])
+//            if let url = URL(string: post.videoUrl) {
+//                VideoPlayer(player: AVPlayer(url: url))
+//                    .containerRelativeFrame([.horizontal, .vertical])
+//            } else {
+//                Text("Invalid video URL")
+//            }
+//            
+//            if let url = URL(string: post.videoUrl) {
+//                CustomVideoPlayer(player: AVPlayer(url: url))
+//                    .containerRelativeFrame([.horizontal, .vertical])
+//            } else {
+//                Text("Invalid video URL")
+//            }
             
             VStack {
                 Spacer()
@@ -98,9 +112,12 @@ struct FeedCellView: View {
             }
             .padding()
         }
+        .onAppear {
+//            player.play()
+        }
     }
 }
 
 #Preview {
-    FeedCellView(post: Post(id: NSUUID().uuidString, videoUrl: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"))
+    FeedCellView(post: Post(id: NSUUID().uuidString, player: ""))
 }
