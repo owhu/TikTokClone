@@ -112,12 +112,21 @@ struct FeedCellView: View {
             }
             .padding()
         }
-        .onAppear {
-//            player.play()
+        .onTapGesture {
+            switch player.timeControlStatus {
+            case .paused:
+                player.play()
+            case .waitingToPlayAtSpecifiedRate:
+                break
+            case .playing:
+                player.pause()
+            @unknown default:
+                break
+            }
         }
     }
 }
 
 #Preview {
-    FeedCellView(post: Post(id: NSUUID().uuidString, player: ""))
+    FeedCellView(post: Post(id: NSUUID().uuidString, videoUrl: ""), player: AVPlayer())
 }
