@@ -25,6 +25,9 @@
 		EE39015D2C77E19E0091674D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39015C2C77E19E0091674D /* Post.swift */; };
 		EE3901642C77E24C0091674D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3901632C77E24C0091674D /* FeedViewModel.swift */; };
 		EE904AC72C78FC7400D5AAFB /* CustomVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE904AC62C78FC7400D5AAFB /* CustomVideoPlayer.swift */; };
+		EE904B062C7E66CE00D5AAFB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE904B052C7E66CE00D5AAFB /* LoginView.swift */; };
+		EE904B082C7E66DD00D5AAFB /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE904B072C7E66DD00D5AAFB /* RegistrationView.swift */; };
+		EE904B0A2C7E6D9600D5AAFB /* StandardTextfieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE904B092C7E6D9600D5AAFB /* StandardTextfieldModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +50,9 @@
 		EE39015C2C77E19E0091674D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EE3901632C77E24C0091674D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		EE904AC62C78FC7400D5AAFB /* CustomVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomVideoPlayer.swift; sourceTree = "<group>"; };
+		EE904B052C7E66CE00D5AAFB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EE904B072C7E66DD00D5AAFB /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		EE904B092C7E6D9600D5AAFB /* StandardTextfieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardTextfieldModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 		EE3901162C6BFE640091674D /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				EE904B092C7E6D9600D5AAFB /* StandardTextfieldModifier.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -222,6 +229,11 @@
 		EE3901202C6BFF750091674D /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				EE904B042C7E667E00D5AAFB /* Model */,
+				EE904B032C7E667D00D5AAFB /* Protocols */,
+				EE904B022C7E667B00D5AAFB /* Service */,
+				EE904B012C7E667900D5AAFB /* View */,
+				EE904B002C7E667700D5AAFB /* ViewModel */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -275,6 +287,43 @@
 			children = (
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		EE904B002C7E667700D5AAFB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EE904B012C7E667900D5AAFB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EE904B052C7E66CE00D5AAFB /* LoginView.swift */,
+				EE904B072C7E66DD00D5AAFB /* RegistrationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EE904B022C7E667B00D5AAFB /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EE904B032C7E667D00D5AAFB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		EE904B042C7E667E00D5AAFB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,8 +397,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE3901552C77CD180091674D /* ProfileHeaderView.swift in Sources */,
+				EE904B0A2C7E6D9600D5AAFB /* StandardTextfieldModifier.swift in Sources */,
 				EE904AC72C78FC7400D5AAFB /* CustomVideoPlayer.swift in Sources */,
 				EE39012B2C753D9D0091674D /* FeedView.swift in Sources */,
+				EE904B082C7E66DD00D5AAFB /* RegistrationView.swift in Sources */,
 				EE3901012C6BFDC30091674D /* ContentView.swift in Sources */,
 				EE39015B2C77D24A0091674D /* UserStatView.swift in Sources */,
 				EE3900FF2C6BFDC30091674D /* TikTokCloneApp.swift in Sources */,
@@ -357,6 +408,7 @@
 				EE39015D2C77E19E0091674D /* Post.swift in Sources */,
 				EE3901332C768CB00091674D /* UserCellView.swift in Sources */,
 				EE3901222C6C00360091674D /* MainTabView.swift in Sources */,
+				EE904B062C7E66CE00D5AAFB /* LoginView.swift in Sources */,
 				EE3901372C769BEC0091674D /* NotificationCellView.swift in Sources */,
 				EE3901312C768C8C0091674D /* ExploreView.swift in Sources */,
 				EE3901572C77CD250091674D /* PostGridView.swift in Sources */,
