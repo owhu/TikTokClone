@@ -10,6 +10,16 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
+    @StateObject var viewModel: LogInViewModel
+    
+    private let authService: AuthService
+    
+    init(authService: AuthService) {
+        self.authService = authService
+        
+        let vm = LogInViewModel(authService: authService)
+        self._viewModel = StateObject(wrappedValue: vm)
+    }
     
     var body: some View {
         NavigationStack {
@@ -48,7 +58,7 @@ struct LoginView: View {
                 // login button
                 
                 Button {
-                    print("DEBUG: Login")
+                    Task { await viewModel.login(withEmail: email, password: password) }
                 } label: {
                     Text("Login")
                         .font(.subheadline)
@@ -59,7 +69,8 @@ struct LoginView: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
                 .padding(.vertical)
-                .disabled(email.isEmpty && password.isEmpty)
+                .disabled(!formIsValid)
+                .opacity(formIsValid ? 1 : 0.7)
                 
                 Spacer()
                 
@@ -67,7 +78,7 @@ struct LoginView: View {
                 Divider()
                 
                 NavigationLink {
-                    RegistrationView()
+                    RegistrationView(authService: authService)
                 } label: {
                     HStack(spacing: 3) {
                         Text("Don't have an account?")
@@ -84,6 +95,16 @@ struct LoginView: View {
     }
 }
 
+// MARK: - AuthenticationFormProtocol
+
+extension LoginView: AuthenticationFormProtocol {
+    var formIsValid: Bool {
+        return !email.isEmpty
+        && email.contains("@")
+        && !password.isEmpty
+    }
+}
+
 #Preview {
-    LoginView()
+    LoginView(authService: AuthService())
 }
