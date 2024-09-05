@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ExploreView: View {
+    @State private var users = DeveloperPreview.users
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    ForEach(0..<20) { user in
-                        UserCellView()
+                    ForEach(users) { user in
+                        UserCellView(user: user)
                             .padding(.horizontal)
                     }
                 }
