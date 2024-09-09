@@ -6,23 +6,38 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct EditProfileView: View {
+    @State private var selectedPickerItem: PhotosPickerItem?
+    @State private var profileImage: Image?
+    
+    
     let user: User
     
     var body: some View {
         NavigationStack {
             VStack {
-                VStack(spacing: 8) {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80, height: 80)
-                        .foregroundStyle(Color(.systemGray5))
-                    Button("Change photo") {
-                        print("DEBUG: Change photo pressed.")
+                PhotosPicker(selection: $selectedPickerItem, matching: .images) {
+                    VStack {
+                        if let image = profileImage {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 64, height: 64)
+                                .clipShape(Circle())
+                        } else {
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 64, height: 64)
+                                .clipShape(Circle())
+                                .foregroundStyle(Color(.systemGray5))
+                        }
+                        
+                        Text("Change photo")
+                            .foregroundStyle(.black)
                     }
-                    .foregroundStyle(.black)
                 }
                 .padding()
                 
@@ -65,6 +80,10 @@ struct EditProfileView: View {
                 
                 Spacer()
             }
+            // links task to particular id, so when id changes, the task is run
+            .task(id: selectedPickerItem) {
+                await loadImage(fromItem: selectedPickerItem)
+            }
             .navigationTitle("Edit profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -84,6 +103,17 @@ struct EditProfileView: View {
                 }
             }
         }
+    }
+}
+
+extension EditProfileView {
+    func loadImage(fromItem item: PhotosPickerItem?) async {
+        guard let item else { return }
+        
+        guard let data = try? await item.loadTransferable(type: Data.self) else { return }
+        
+        guard let uiImage = UIImage(data: data) else { return }
+        self.profileImage = Image(uiImage: uiImage)
     }
 }
 
