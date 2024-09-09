@@ -8,17 +8,22 @@
 import SwiftUI
 
 struct ExploreView: View {
-    @State private var users = DeveloperPreview.users
+    @StateObject var viewModel = ExploreViewModel(userService: MockUserService())
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 16) {
-                    ForEach(users) { user in
-                        UserCellView(user: user)
-                            .padding(.horizontal)
+                    ForEach(viewModel.users) { user in
+                        NavigationLink(value: user) {
+                            UserCellView(user: user)
+                                .padding(.horizontal)
+                        }
                     }
                 }
+            }
+            .navigationDestination(for: User.self) { user in
+                UserProfileView(user: user)
             }
             .navigationTitle("Explore")
             .navigationBarTitleDisplayMode(.inline)

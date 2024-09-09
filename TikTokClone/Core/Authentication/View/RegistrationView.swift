@@ -10,7 +10,7 @@ import SwiftUI
 struct RegistrationView: View {
     @State private var email = ""
     @State private var password = ""
-    @State private var fullName = ""
+    @State private var fullname = ""
     @State private var username = ""
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: RegistrationViewModel
@@ -45,7 +45,7 @@ struct RegistrationView: View {
                     .textInputAutocapitalization(.never)
                     .modifier(StandardTextfieldModifier())
                 
-                TextField("Enter your full name", text: $fullName)
+                TextField("Enter your full name", text: $fullname)
                     .modifier(StandardTextfieldModifier())
                 
                 TextField("Enter your username", text: $username)
@@ -60,7 +60,7 @@ struct RegistrationView: View {
                 Task { await viewModel.createUser(withEmail: email,
                                                   password: password,
                                                   username: username,
-                                                  fullName: fullName)
+                                                  fullname: fullname)
                 }
             } label: {
                 Text("Sign Up")
@@ -105,7 +105,7 @@ extension RegistrationView: AuthenticationFormProtocol {
         return !email.isEmpty
         && email.contains("@")
         && !password.isEmpty
-        && !fullName.isEmpty
+        && !fullname.isEmpty
         && !username.isEmpty
     }
 }
