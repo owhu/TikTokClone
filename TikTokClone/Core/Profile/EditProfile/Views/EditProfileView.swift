@@ -12,6 +12,7 @@ struct EditProfileView: View {
     @State private var selectedPickerItem: PhotosPickerItem?
     @State private var profileImage: Image?
     
+    @Environment(\.dismiss) var dismiss
     
     let user: User
     
@@ -47,32 +48,11 @@ struct EditProfileView: View {
                         .foregroundStyle(Color(.systemGray2))
                         .fontWeight(.semibold)
                     
-                    HStack {
-                        Text("Name")
-                        
-                        Spacer()
-                        
-                        Text(user.fullname)
-                    }
+                    EditProfileOptionRowView(option: .name, value: user.fullname)
                     
-                    HStack {
-                        Text("Username")
-                        
-                        Spacer()
-                        
-                        Text(user.username)
-                    }
+                    EditProfileOptionRowView(option: .username, value: user.username)
                     
-                    HStack {
-                        Text("Bio")
-                        
-                        Spacer()
-                        
-                        Button("Add a bio") {
-                            print("DEBUG: Add bio here")
-                        }
-                        .foregroundStyle(.black)
-                    }
+                    EditProfileOptionRowView(option: .bio, value: user.bio ?? "Add a bio")
                     
                 }
                 .font(.subheadline)
@@ -84,19 +64,22 @@ struct EditProfileView: View {
             .task(id: selectedPickerItem) {
                 await loadImage(fromItem: selectedPickerItem)
             }
+            .navigationDestination(for: EditProfileOptions.self) { option in
+                EditProfileDetailView(option: option, user: user)
+            }
             .navigationTitle("Edit profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
-                        
+                        dismiss()
                     }
                     .foregroundStyle(.black)
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
-                        
+                        dismiss()
                     }
                     .fontWeight(.semibold)
                     .foregroundStyle(.black)
@@ -106,7 +89,7 @@ struct EditProfileView: View {
     }
 }
 
-extension EditProfileView {
+private extension EditProfileView {
     func loadImage(fromItem item: PhotosPickerItem?) async {
         guard let item else { return }
         
@@ -120,3 +103,4 @@ extension EditProfileView {
 #Preview {
     EditProfileView(user: DeveloperPreview.user)
 }
+

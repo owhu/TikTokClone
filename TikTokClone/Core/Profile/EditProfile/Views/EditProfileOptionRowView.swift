@@ -8,11 +8,22 @@
 import SwiftUI
 
 struct EditProfileOptionRowView: View {
+    let option: EditProfileOptions
+    let value: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink(value: option) {
+            Text(option.title)
+            
+            Spacer()
+            
+            Text(value)
+        }
+        .foregroundStyle(.primary)
     }
 }
 
+
 #Preview {
-    EditProfileOptionRowView()
+    EditProfileOptionRowView(option: .name, value: "lewis.hamilton")
 }
