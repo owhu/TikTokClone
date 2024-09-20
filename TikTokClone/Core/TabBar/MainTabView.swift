@@ -42,11 +42,12 @@ struct MainTabView: View {
                 .onAppear { selectedTab = 1 }
                 .tag(1)
             
-            Text("Upload Post")
+            MediaSelectorView()
                 .tabItem {
                     Image(systemName: "plus")
-                        .environment(\.symbolVariants, selectedTab == 2 ? .fill : .none)
                 }
+                .onAppear { selectedTab = 2 }
+                .tag(2)
             
             NotificationsView()
                 .tabItem {

@@ -11,8 +11,12 @@ import PhotosUI
 struct EditProfileView: View {
     @State private var selectedPickerItem: PhotosPickerItem?
     @State private var profileImage: Image?
-    
+    @State private var uiImage: UIImage?
     @Environment(\.dismiss) var dismiss
+    
+    @StateObject var manager = EditProfileManager(imageUploader: ImageUploader())
+    
+    
     
     let user: User
     
@@ -25,15 +29,10 @@ struct EditProfileView: View {
                             image
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width: 64, height: 64)
+                                .frame(width: avatarSize.dimension, height: avatarSize.dimension)
                                 .clipShape(Circle())
                         } else {
-                            Image(systemName: "person.circle.fill")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 64, height: 64)
-                                .clipShape(Circle())
-                                .foregroundStyle(Color(.systemGray5))
+                            AvatarView(user: user, size: avatarSize)
                         }
                         
                         Text("Change photo")
@@ -79,7 +78,7 @@ struct EditProfileView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
-                        dismiss()
+                        onDoneTapped()
                     }
                     .fontWeight(.semibold)
                     .foregroundStyle(.black)
@@ -96,7 +95,20 @@ private extension EditProfileView {
         guard let data = try? await item.loadTransferable(type: Data.self) else { return }
         
         guard let uiImage = UIImage(data: data) else { return }
+        self.uiImage = uiImage
         self.profileImage = Image(uiImage: uiImage)
+    }
+    
+    func onDoneTapped() {
+        Task {
+            guard let uiImage else { return }
+            await manager.uploadProfileImage(uiImage)
+            dismiss()
+        }
+    }
+    
+    var avatarSize: AvatarSize {
+        return .large
     }
 }
 
